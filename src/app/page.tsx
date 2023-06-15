@@ -1,3 +1,14 @@
+import Card from "@/components/Card"
+import mockData from "@/mockData.json"
+
 export default function Home() {
-  return <main>hello world!</main>
+  return (
+    <main className="mt-10">
+      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 px-20">
+        {mockData.map((app) => (
+          <Card application={app} key={app.projectId} />
+        ))}
+      </div>
+    </main>
+  )
 }
