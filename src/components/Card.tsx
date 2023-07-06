@@ -8,7 +8,7 @@ interface Props {
 
 const Card = ({ application }: Props) => {
   return (
-    <div className="border border-gray-200 rounded-lg shadow-md p-5 text-sm flex flex-col min-h-[350px]">
+    <div className="border border-gray-200 rounded-lg shadow-md p-5 text-sm flex flex-col min-h-[320px]">
       <div className="flex my-2">
         Data Owner Name :{" "}
         {application.applicationInfo["Core Information"]["Data Owner Name"]}
