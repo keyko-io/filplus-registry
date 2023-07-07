@@ -1,6 +1,6 @@
-import { App } from "@/type"
-import Link from "next/link"
-import React from "react"
+import { App } from '@/type'
+import Link from 'next/link'
+import React from 'react'
 
 interface Props {
   application: App
@@ -10,14 +10,14 @@ const Card = ({ application }: Props) => {
   return (
     <div className="border border-gray-200 rounded-lg shadow-md p-5 text-sm flex flex-col min-h-[320px]">
       <div className="flex my-2">
-        Data Owner Name :{" "}
-        {application.applicationInfo["Core Information"]["Data Owner Name"]}
+        Data Owner Name :{' '}
+        {application.applicationInfo['Core Information']['Data Owner Name']}
       </div>
 
       <hr />
 
       <div className="flex my-2">
-        On-chain address :{" "}
+        On-chain address :{' '}
         {
           application.applicationInfo.dataCapAllocations[
             application.applicationInfo.dataCapAllocations?.length - 1
@@ -28,7 +28,7 @@ const Card = ({ application }: Props) => {
       <hr />
 
       <div className="flex my-2">
-        Multisig :{" "}
+        Multisig :{' '}
         {
           application.applicationInfo.dataCapAllocations[
             application.applicationInfo.dataCapAllocations?.length - 1
@@ -39,7 +39,7 @@ const Card = ({ application }: Props) => {
       <hr />
 
       <div className="flex flex-col my-2">
-        Datacap :{" "}
+        Datacap :{' '}
         {
           application.applicationInfo.dataCapAllocations[
             application.applicationInfo.dataCapAllocations?.length - 1
@@ -50,7 +50,7 @@ const Card = ({ application }: Props) => {
       <hr />
 
       <div className="flex flex-col my-2">
-        Approvals :{" "}
+        Approvals :{' '}
         {application.applicationInfo.dataCapAllocations[
           application.applicationInfo.dataCapAllocations?.length - 1
         ].signers.length === 0
