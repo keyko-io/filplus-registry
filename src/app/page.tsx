@@ -1,6 +1,6 @@
-"use client"
-import Card from "@/components/Card"
-import mockData from "@/mockData.json"
+'use client'
+import Card from '@/components/Card'
+import mockData from '@/mockData.json'
 
 export default function Home() {
   return (

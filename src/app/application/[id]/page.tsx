@@ -1,5 +1,5 @@
-import React from "react"
-import mockData from "@/mockData.json"
+import React from 'react'
+import mockData from '@/mockData.json'
 
 const Application = ({ params: { id } }: { params: { id: string } }) => {
   const application = mockData.find((data) => data.projectId === id)
@@ -11,10 +11,10 @@ const Application = ({ params: { id } }: { params: { id: string } }) => {
         <h4 className="text-2xl">Transaction Info</h4>
         <div className="mt-10">
           <div className="flex my-2">
-            Data Owner Name :{" "}
+            Data Owner Name :{' '}
             {
-              application?.applicationInfo["Core Information"][
-                "Data Owner Name"
+              application?.applicationInfo['Core Information'][
+                'Data Owner Name'
               ]
             }
           </div>
@@ -22,7 +22,7 @@ const Application = ({ params: { id } }: { params: { id: string } }) => {
           <hr />
 
           <div className="flex my-2">
-            On-chain address :{" "}
+            On-chain address :{' '}
             {
               application?.applicationInfo.dataCapAllocations[
                 application.applicationInfo.dataCapAllocations?.length - 1
@@ -33,7 +33,7 @@ const Application = ({ params: { id } }: { params: { id: string } }) => {
           <hr />
 
           <div className="flex my-2">
-            Multisig :{" "}
+            Multisig :{' '}
             {
               application?.applicationInfo.dataCapAllocations[
                 application.applicationInfo.dataCapAllocations?.length - 1
@@ -44,7 +44,7 @@ const Application = ({ params: { id } }: { params: { id: string } }) => {
           <hr />
 
           <div className="flex flex-col my-2">
-            Datacap :{" "}
+            Datacap :{' '}
             {
               application?.applicationInfo.dataCapAllocations[
                 application.applicationInfo.dataCapAllocations?.length - 1
@@ -55,10 +55,10 @@ const Application = ({ params: { id } }: { params: { id: string } }) => {
           <hr />
 
           <div className="flex flex-col my-2">
-            Data Owner Country/Region :{" "}
+            Data Owner Country/Region :{' '}
             {
-              application?.applicationInfo["Core Information"][
-                "Data Owner Country/Region"
+              application?.applicationInfo['Core Information'][
+                'Data Owner Country/Region'
               ]
             }
           </div>
@@ -66,10 +66,10 @@ const Application = ({ params: { id } }: { params: { id: string } }) => {
           <hr />
 
           <div className="flex flex-col my-2">
-            Data Owner Industry :{" "}
+            Data Owner Industry :{' '}
             {
-              application?.applicationInfo["Core Information"][
-                "Data Owner Industry"
+              application?.applicationInfo['Core Information'][
+                'Data Owner Industry'
               ]
             }
           </div>
@@ -77,13 +77,13 @@ const Application = ({ params: { id } }: { params: { id: string } }) => {
           <hr />
 
           <div className="flex my-2">
-            Website :{" "}
+            Website :{' '}
             <a
-              href={application?.applicationInfo["Core Information"].Website}
+              href={application?.applicationInfo['Core Information'].Website}
               className="pl-2 text-blue-400"
             >
-              {" "}
-              {application?.applicationInfo["Core Information"].Website}
+              {' '}
+              {application?.applicationInfo['Core Information'].Website}
             </a>
           </div>
 
@@ -93,8 +93,8 @@ const Application = ({ params: { id } }: { params: { id: string } }) => {
             {application?.applicationInfo.dataCapAllocations[
               application.applicationInfo.dataCapAllocations?.length - 1
             ].signers.length === 0
-              ? "Propose"
-              : "Approve"}
+              ? 'Propose'
+              : 'Approve'}
           </button>
         </div>
       </div>

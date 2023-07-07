@@ -5,16 +5,16 @@ export interface App {
 }
 
 export interface ApplicationInfo {
-  "Core Information": CoreInformation
+  'Core Information': CoreInformation
   dataCapAllocations: DataCapAllocation[]
 }
 
 export interface CoreInformation {
-  "Data Owner Name": string
-  "Data Owner Country/Region": string
-  "Data Owner Industry": string
+  'Data Owner Name': string
+  'Data Owner Country/Region': string
+  'Data Owner Industry': string
   Website: string
-  "Social Media": string[]
+  'Social Media': string[]
 }
 
 export interface DataCapAllocation {
@@ -26,5 +26,5 @@ export interface DataCapAllocation {
   allocationAmount: string
   signers: any[]
   pr: number
-  "pr-cid": string
+  'pr-cid': string
 }
