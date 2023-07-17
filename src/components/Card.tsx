@@ -1,73 +1,126 @@
 import { App } from '@/type'
 import Link from 'next/link'
 import React from 'react'
+import { Button } from './ui/button'
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from './ui/card'
 
 interface Props {
   application: App
 }
 
-const Card = ({ application }: Props) => {
+const AppCard = ({ application }: Props) => {
   return (
-    <div className="border border-gray-200 rounded-lg shadow-md p-5 text-sm flex flex-col min-h-[320px]">
-      <div className="flex my-2">
-        Data Owner Name :{' '}
-        {application.applicationInfo['Core Information']['Data Owner Name']}
-      </div>
-
-      <hr />
-
-      <div className="flex my-2">
-        On-chain address :{' '}
-        {
-          application.applicationInfo.dataCapAllocations[
-            application.applicationInfo.dataCapAllocations?.length - 1
-          ].clientAddress
-        }
-      </div>
-
-      <hr />
-
-      <div className="flex my-2">
-        Multisig :{' '}
-        {
-          application.applicationInfo.dataCapAllocations[
-            application.applicationInfo.dataCapAllocations?.length - 1
-          ].multisig
-        }
-      </div>
-
-      <hr />
-
-      <div className="flex flex-col my-2">
-        Datacap :{' '}
-        {
-          application.applicationInfo.dataCapAllocations[
-            application.applicationInfo.dataCapAllocations?.length - 1
-          ].allocationAmount
-        }
-      </div>
-
-      <hr />
-
-      <div className="flex flex-col my-2">
-        Approvals :{' '}
-        {application.applicationInfo.dataCapAllocations[
-          application.applicationInfo.dataCapAllocations?.length - 1
-        ].signers.length === 0
-          ? 0
-          : 1}
-      </div>
-
-      <hr />
-
-      <Link
-        href={`/application/${application.projectId}`}
-        className="text-white bg-blue-500 px-4 py-2 rounded-lg cursor-pointer w-max mx-auto mt-auto"
-      >
-        Proceed
-      </Link>
-    </div>
+    <Card>
+      <CardHeader>Card Header Content</CardHeader>
+      <CardContent className="grid gap-4">
+        <div className="flex items-center justify-between">
+          <p className="text-xs text-muted-foreground">Data Owner Name</p>
+          <p className="text-xs font-medium leading-none">
+            {application.applicationInfo['Core Information']['Data Owner Name']}
+          </p>
+        </div>
+        <div className="flex items-center justify-between">
+          <p className="text-xs text-muted-foreground">Multisig</p>
+          <p className="text-xs font-medium leading-none">
+            {
+              application.applicationInfo.dataCapAllocations[
+                application.applicationInfo.dataCapAllocations?.length - 1
+              ].multisig
+            }
+          </p>
+        </div>
+        <div className="flex items-center justify-between">
+          <p className="text-xs text-muted-foreground">Datacap</p>
+          <p className="text-xs font-medium leading-none">
+            {
+              application.applicationInfo.dataCapAllocations[
+                application.applicationInfo.dataCapAllocations?.length - 1
+              ].allocationAmount
+            }
+          </p>
+        </div>
+        <div className="flex items-center justify-between">
+          <p className="text-xs text-muted-foreground">Status</p>
+          <p className="text-xs font-medium leading-none">
+            {application.applicationInfo.dataCapAllocations[
+              application.applicationInfo.dataCapAllocations?.length - 1
+            ].signers.length === 0
+              ? 'waiting proposal'
+              : 'already proposed'}
+          </p>
+        </div>
+      </CardContent>
+      <CardFooter className="flex">
+        <Button asChild className="w-full">
+          <Link href={`/application/${application.projectId}`}>Detail</Link>
+        </Button>
+      </CardFooter>
+    </Card>
   )
 }
 
-export default Card
+export default AppCard
+
+// <div className="border border-gray-200 rounded-lg shadow-md p-5 text-sm flex flex-col min-h-[320px]">
+// <div className="flex my-2">
+//   Data Owner Name :{' '}
+//   {application.applicationInfo['Core Information']['Data Owner Name']}
+// </div>
+
+// <hr />
+
+// <div className="flex my-2">
+//   On-chain address :{' '}
+//   {
+//     application.applicationInfo.dataCapAllocations[
+//       application.applicationInfo.dataCapAllocations?.length - 1
+//     ].clientAddress
+//   }
+// </div>
+
+// <hr />
+
+// <div className="flex my-2">
+//   Multisig :{' '}
+//   {
+//     application.applicationInfo.dataCapAllocations[
+//       application.applicationInfo.dataCapAllocations?.length - 1
+//     ].multisig
+//   }
+// </div>
+
+// <hr />
+
+// <div className="flex flex-col my-2">
+//   Datacap :{' '}
+//   {
+//     application.applicationInfo.dataCapAllocations[
+//       application.applicationInfo.dataCapAllocations?.length - 1
+//     ].allocationAmount
+//   }
+// </div>
+
+// <hr />
+
+// <div className="flex flex-col my-2">
+//   Approvals :{' '}
+//   {application.applicationInfo.dataCapAllocations[
+//     application.applicationInfo.dataCapAllocations?.length - 1
+//   ].signers.length === 0
+//     ? 0
+//     : 1}
+// </div>
+
+// <hr />
+
+// <Button asChild className="mt-auto">
+//   <Link href={`/application/${application.projectId}`}>Proceed</Link>
+// </Button>
+// </div>

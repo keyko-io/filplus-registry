@@ -2,11 +2,12 @@
 import { signIn, signOut, useSession } from 'next-auth/react'
 import Link from 'next/link'
 import React from 'react'
+import { Button } from './ui/button'
+import { Github } from 'lucide-react'
+//import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 
 const Navbar = () => {
   const session = useSession()
-
-  console.log(session, 'xx')
 
   return (
     <div className="h-16 shadow-md flex items-center px-12 justify-between">
@@ -16,19 +17,11 @@ const Navbar = () => {
         <div>About</div>
 
         {session.status !== 'authenticated' ? (
-          <button
-            className="bg-black text-white py-2 px-4 text-sm font-medium rounded-md"
-            onClick={() => signIn('github')}
-          >
-            Github Login
-          </button>
+          <Button onClick={() => signIn('github')}>
+            <Github className="mr-2 h-4 w-4" /> Login with Github
+          </Button>
         ) : (
-          <button
-            className="bg-black text-white py-2 px-4 text-sm font-medium rounded-md"
-            onClick={() => signOut()}
-          >
-            Logout
-          </button>
+          <Button onClick={() => signOut()}>Logout</Button>
         )}
       </div>
     </div>
