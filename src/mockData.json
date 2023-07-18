@@ -129,5 +129,109 @@
         }
       ]
     }
+  },
+  {
+    "dataCapApplicationType": ["ldn-v3"],
+    "projectId": "5",
+    "applicationInfo": {
+      "Core Information": {
+        "Data Owner Name": "NCAR",
+        "Data Owner Country/Region": "United States",
+        "Data Owner Industry": "Environment",
+        "Website": "https://ncar.ucar.edu/",
+        "Social Media": ["https://www.youtube.com/ncarucar"]
+      },
+      "dataCapAllocations": [
+        {
+          "uuid": "ffe0897b-255a-4581-8c94-88dc79083a19",
+          "clientAddress": "f1b4u4eclr63rjz2wqbnlso75vs5p5qp4rdmj45ai",
+          "timeOfRequest": 0,
+          "timeOfAllocation": 0,
+          "multisig": "f02049625",
+          "allocationAmount": "256TiB",
+          "signers": [],
+          "pr": 0,
+          "pr-cid": "bafy"
+        }
+      ]
+    }
+  },
+  {
+    "dataCapApplicationType": ["ldn-v3"],
+    "projectId": "6",
+    "applicationInfo": {
+      "Core Information": {
+        "Data Owner Name": "NCAR",
+        "Data Owner Country/Region": "United States",
+        "Data Owner Industry": "Environment",
+        "Website": "https://ncar.ucar.edu/",
+        "Social Media": ["https://www.youtube.com/ncarucar"]
+      },
+      "dataCapAllocations": [
+        {
+          "uuid": "ffe0897b-255a-4581-8c94-88dc79083a19",
+          "clientAddress": "f1b4u4eclr63rjz2wqbnlso75vs5p5qp4rdmj45ai",
+          "timeOfRequest": 0,
+          "timeOfAllocation": 0,
+          "multisig": "f02049625",
+          "allocationAmount": "256TiB",
+          "signers": [],
+          "pr": 0,
+          "pr-cid": "bafy"
+        }
+      ]
+    }
+  },
+  {
+    "dataCapApplicationType": ["ldn-v3"],
+    "projectId": "7",
+    "applicationInfo": {
+      "Core Information": {
+        "Data Owner Name": "NCAR",
+        "Data Owner Country/Region": "United States",
+        "Data Owner Industry": "Environment",
+        "Website": "https://ncar.ucar.edu/",
+        "Social Media": ["https://www.youtube.com/ncarucar"]
+      },
+      "dataCapAllocations": [
+        {
+          "uuid": "ffe0897b-255a-4581-8c94-88dc79083a19",
+          "clientAddress": "f1b4u4eclr63rjz2wqbnlso75vs5p5qp4rdmj45ai",
+          "timeOfRequest": 0,
+          "timeOfAllocation": 0,
+          "multisig": "f02049625",
+          "allocationAmount": "256TiB",
+          "signers": [],
+          "pr": 0,
+          "pr-cid": "bafy"
+        }
+      ]
+    }
+  },
+  {
+    "dataCapApplicationType": ["ldn-v3"],
+    "projectId": "8",
+    "applicationInfo": {
+      "Core Information": {
+        "Data Owner Name": "NCAR",
+        "Data Owner Country/Region": "United States",
+        "Data Owner Industry": "Environment",
+        "Website": "https://ncar.ucar.edu/",
+        "Social Media": ["https://www.youtube.com/ncarucar"]
+      },
+      "dataCapAllocations": [
+        {
+          "uuid": "ffe0897b-255a-4581-8c94-88dc79083a19",
+          "clientAddress": "f1b4u4eclr63rjz2wqbnlso75vs5p5qp4rdmj45ai",
+          "timeOfRequest": 0,
+          "timeOfAllocation": 0,
+          "multisig": "f02049625",
+          "allocationAmount": "256TiB",
+          "signers": [],
+          "pr": 0,
+          "pr-cid": "bafy"
+        }
+      ]
+    }
   }
 ]
