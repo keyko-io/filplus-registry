@@ -9,10 +9,16 @@ import {
   SelectValue,
 } from '@/components/ui/select'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
+import apiClient from '@/lib/apiClient'
 import mockData from '@/mockData.json'
 import { Search } from 'lucide-react'
+import { useQuery } from 'react-query'
 
 export default function Home() {
+  const { data } = useQuery('repoData', () => apiClient.get('todos/1'))
+
+  console.log(data?.data)
+
   return (
     <main className="mt-10 px-10 grid">
       <Tabs defaultValue="grid">
