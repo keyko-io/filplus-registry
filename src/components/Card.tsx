@@ -18,17 +18,17 @@ interface Props {
 const AppCard = ({ application }: Props) => {
   return (
     <Card>
-      <CardHeader>Card Header Content</CardHeader>
-      <CardContent className="grid gap-4">
+      <CardHeader></CardHeader>
+      <CardContent className="grid gap-4 text-xs">
         <div className="flex items-center justify-between">
-          <p className="text-xs text-muted-foreground">Data Owner Name</p>
-          <p className="text-xs font-medium leading-none">
+          <p className="text-muted-foreground">Data Owner Name</p>
+          <p className="font-medium leading-none ">
             {application.applicationInfo['Core Information']['Data Owner Name']}
           </p>
         </div>
         <div className="flex items-center justify-between">
-          <p className="text-xs text-muted-foreground">Multisig</p>
-          <p className="text-xs font-medium leading-none">
+          <p className="text-muted-foreground">Multisig</p>
+          <p className="font-medium leading-none">
             {
               application.applicationInfo.dataCapAllocations[
                 application.applicationInfo.dataCapAllocations?.length - 1
@@ -37,8 +37,8 @@ const AppCard = ({ application }: Props) => {
           </p>
         </div>
         <div className="flex items-center justify-between">
-          <p className="text-xs text-muted-foreground">Datacap</p>
-          <p className="text-xs font-medium leading-none">
+          <p className="text-muted-foreground">Datacap</p>
+          <p className="font-medium leading-none">
             {
               application.applicationInfo.dataCapAllocations[
                 application.applicationInfo.dataCapAllocations?.length - 1
@@ -47,13 +47,13 @@ const AppCard = ({ application }: Props) => {
           </p>
         </div>
         <div className="flex items-center justify-between">
-          <p className="text-xs text-muted-foreground">Status</p>
-          <p className="text-xs font-medium leading-none">
+          <p className="text-muted-foreground">Status</p>
+          <p className="font-medium leading-none">
             {application.applicationInfo.dataCapAllocations[
               application.applicationInfo.dataCapAllocations?.length - 1
             ].signers.length === 0
-              ? 'waiting proposal'
-              : 'already proposed'}
+              ? 'proposal'
+              : 'approval'}
           </p>
         </div>
       </CardContent>

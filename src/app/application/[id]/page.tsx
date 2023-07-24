@@ -1,3 +1,4 @@
+import { Button } from '@/components/ui/button'
 import {
   Card,
   CardContent,
@@ -98,14 +99,49 @@ const Application = ({ params: { id } }: { params: { id: string } }) => {
         </h2>
         <div>
           <Card>
-            <CardHeader>
-              <CardTitle>Card Title</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p>Card Content</p>
+            <CardHeader></CardHeader>
+            <CardContent className="grid gap-4 text-sm">
+              <div className="flex items-center justify-between">
+                <p className="text-muted-foreground">Data Owner Name</p>
+                <p className="font-medium leading-none ">EF</p>
+              </div>
+              <div className="flex items-center justify-between">
+                <p className="text-muted-foreground">Multisig</p>
+                <p className="font-medium leading-none">f02049625</p>
+              </div>
+              <div className="flex items-center justify-between">
+                <p className="text-muted-foreground">Datacap</p>
+                <p className="font-medium leading-none">512TiB</p>
+              </div>
+              <div className="flex items-center justify-between">
+                <p className="text-muted-foreground">
+                  Data Owner Country/Region
+                </p>
+                <p className="font-medium leading-none">China</p>
+              </div>
+              <div className="flex items-center justify-between">
+                <p className="text-muted-foreground">Data Owner Industry</p>
+                <p className="font-medium leading-none">Education & Training</p>
+              </div>
+              <div className="flex items-center justify-between">
+                <p className="text-muted-foreground">
+                  Total amount of DataCap being requested
+                </p>
+                <p className="font-medium leading-none">15PiB</p>
+              </div>
+              <div className="flex items-center justify-between">
+                <p className="text-muted-foreground">Status</p>
+                <p className="font-medium leading-none">Approval</p>
+              </div>
+              <div className="flex items-center justify-between">
+                <p className="text-muted-foreground">Website</p>
+                <p className="font-medium leading-none">
+                  https://www.hzxsef.com/
+                </p>
+              </div>
             </CardContent>
-            <CardFooter>
-              <p>Card Footer</p>
+            <CardFooter className="flex">
+              <Button className="w-full">Approve</Button>
             </CardFooter>
           </Card>
         </div>

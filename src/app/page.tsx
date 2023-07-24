@@ -17,7 +17,7 @@ import { Search } from 'lucide-react'
 import { useQuery } from 'react-query'
 
 export default function Home() {
-  const { data } = useQuery('repoData', () => apiClient.get('todos/1'))
+  const { data } = useQuery('application', () => apiClient.get('application'))
 
   console.log(data?.data)
 
