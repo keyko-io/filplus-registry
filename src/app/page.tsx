@@ -11,15 +11,17 @@ import {
   SelectValue,
 } from '@/components/ui/select'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import apiClient from '@/lib/apiClient'
-import mockData from '@/mockData.json'
+import { getAllApplications } from '@/lib/apiClient'
 import { Search } from 'lucide-react'
 import { useQuery } from 'react-query'
 
 export default function Home() {
-  const { data } = useQuery('application', () => apiClient.get('application'))
+  const { data, isLoading, error } = useQuery({
+    queryKey: ['application'],
+    queryFn: getAllApplications,
+  })
 
-  console.log(data?.data)
+  if (isLoading) return <div>Loading...</div>
 
   return (
     <main className="mt-10 px-10 grid">
@@ -55,9 +57,7 @@ export default function Home() {
 
         <TabsContent value="grid">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 ">
-            {mockData.map((app) => (
-              <AppCard application={app} key={app.projectId} />
-            ))}
+            {data?.map((app) => <AppCard application={app} key={app.id} />)}
           </div>
         </TabsContent>
         <TabsContent value="table">
