@@ -1,14 +1,14 @@
 import { Application } from '@/type'
 import Link from 'next/link'
 import React from 'react'
-import { Button } from './ui/button'
-import { Card, CardContent, CardFooter, CardHeader } from './ui/card'
+import { Button } from '../ui/button'
+import { Card, CardContent, CardFooter, CardHeader } from '../ui/card'
 
 interface Props {
   application: Application
 }
 
-const AppCard = ({ application }: Props) => {
+const HomePageCard = ({ application }: Props) => {
   return (
     <Card>
       <CardHeader></CardHeader>
@@ -47,61 +47,4 @@ const AppCard = ({ application }: Props) => {
   )
 }
 
-export default AppCard
-
-// <div className="border border-gray-200 rounded-lg shadow-md p-5 text-sm flex flex-col min-h-[320px]">
-// <div className="flex my-2">
-//   Data Owner Name :{' '}
-//   {application.applicationInfo['Core Information']['Data Owner Name']}
-// </div>
-
-// <hr />
-
-// <div className="flex my-2">
-//   On-chain address :{' '}
-//   {
-//     application.applicationInfo.dataCapAllocations[
-//       application.applicationInfo.dataCapAllocations?.length - 1
-//     ].clientAddress
-//   }
-// </div>
-
-// <hr />
-
-// <div className="flex my-2">
-//   Multisig :{' '}
-//   {
-//     application.applicationInfo.dataCapAllocations[
-//       application.applicationInfo.dataCapAllocations?.length - 1
-//     ].multisig
-//   }
-// </div>
-
-// <hr />
-
-// <div className="flex flex-col my-2">
-//   Datacap :{' '}
-//   {
-//     application.applicationInfo.dataCapAllocations[
-//       application.applicationInfo.dataCapAllocations?.length - 1
-//     ].allocationAmount
-//   }
-// </div>
-
-// <hr />
-
-// <div className="flex flex-col my-2">
-//   Approvals :{' '}
-//   {application.applicationInfo.dataCapAllocations[
-//     application.applicationInfo.dataCapAllocations?.length - 1
-//   ].signers.length === 0
-//     ? 0
-//     : 1}
-// </div>
-
-// <hr />
-
-// <Button asChild className="mt-auto">
-//   <Link href={`/application/${application.projectId}`}>Proceed</Link>
-// </Button>
-// </div>
+export default HomePageCard

@@ -1,6 +1,6 @@
 'use client'
 import { DatacapAllocation } from '@/type'
-import AppHistoryCard from './AppHistoryCard'
+import AppHistoryCard from './cards/AppHistoryCard'
 
 interface ComponentProps {
   datacapAllocations: DatacapAllocation[]
@@ -16,7 +16,9 @@ const AppHistory = ({ datacapAllocations }: ComponentProps) => {
       </h2>
       <div className="grid gap-4 max-w-xl">
         {datacapAllocations.length === 0 ? (
-          <div>No allocation yet.</div>
+          <div className="rounded-lg border bg-card text-card-foreground shadow-sm p-6">
+            No allocation yet.
+          </div>
         ) : (
           datacapAllocations.map((allocation) => (
             <AppHistoryCard

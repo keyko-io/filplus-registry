@@ -1,6 +1,6 @@
 'use client'
-import AppCard from '@/components/Card'
-import { columns, tableData } from '@/components/table/columns'
+import AppCard from '@/components/cards/HomePageCard'
+import { columns } from '@/components/table/columns'
 import { DataTable } from '@/components/table/data-table'
 import { Input } from '@/components/ui/input'
 import {
@@ -61,7 +61,7 @@ export default function Home() {
           </div>
         </TabsContent>
         <TabsContent value="table">
-          <DataTable columns={columns} data={tableData} />
+          <DataTable columns={columns} data={data || []} />
         </TabsContent>
       </Tabs>
     </main>
