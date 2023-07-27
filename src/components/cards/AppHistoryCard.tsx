@@ -12,7 +12,7 @@ const AppHistoryCard = ({ allocation }: ComponentProps) => {
     <Card>
       <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
         <CardTitle className="text-md font-medium">Allocation Amount</CardTitle>
-        <span className="bg-green-300 p-0.5 text-sm">
+        <span className="bg-green-400 p-0.5 px-1 text-sm">
           {allocation.request_information.allocation_amount}
         </span>
       </CardHeader>
