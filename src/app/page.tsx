@@ -14,12 +14,18 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { getAllApplications } from '@/lib/apiClient'
 import { Search } from 'lucide-react'
 import { useQuery } from 'react-query'
+import { useState } from 'react'
 
 export default function Home() {
   const { data, isLoading, error } = useQuery({
     queryKey: ['application'],
     queryFn: getAllApplications,
   })
+  const [filter, setFilter] = useState('all')
+  const filteredData = data?.filter(
+    (app) =>
+      filter === 'all' || app.info.application_lifecycle.state === filter,
+  )
 
   if (isLoading) return <div>Loading...</div>
 
@@ -38,13 +44,19 @@ export default function Home() {
               />
             </div>
 
-            <Select onValueChange={(value) => console.log(value)}>
+            <Select onValueChange={(value) => setFilter(value)}>
               <SelectTrigger id="area" className="w-[180px]">
                 <SelectValue placeholder="Filter Applications" />
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="all">All</SelectItem>
-                <SelectItem value="efil">Efil+</SelectItem>
+                <SelectItem value="Confirmed">Confirmed</SelectItem>
+                <SelectItem value="Approval">Approval</SelectItem>
+                <SelectItem value="Proposal">Proposal</SelectItem>
+                <SelectItem value="Validation">Validation</SelectItem>
+                <SelectItem value="GovernanceReview">
+                  Governance Review
+                </SelectItem>
               </SelectContent>
             </Select>
           </div>
@@ -57,11 +69,13 @@ export default function Home() {
 
         <TabsContent value="grid">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 ">
-            {data?.map((app) => <AppCard application={app} key={app.id} />)}
+            {filteredData?.map((app) => (
+              <AppCard application={app} key={app.id} />
+            ))}
           </div>
         </TabsContent>
         <TabsContent value="table">
-          <DataTable columns={columns} data={data || []} />
+          <DataTable columns={columns} data={filteredData || []} />
         </TabsContent>
       </Tabs>
     </main>
