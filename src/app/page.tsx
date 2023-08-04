@@ -14,8 +14,9 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { getAllApplications } from '@/lib/apiClient'
 import { Search } from 'lucide-react'
 import { useQuery } from 'react-query'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Fuse from 'fuse.js'
+import { Application } from '@/type'
 
 export default function Home() {
   const { data, isLoading, error } = useQuery({
@@ -24,24 +25,32 @@ export default function Home() {
   })
   const [filter, setFilter] = useState('all')
   const [searchTerm, setSearchTerm] = useState('')
-  const filteredData =
-    data?.filter(
-      (app) =>
-        filter === 'all' || app.info.application_lifecycle.state === filter,
-    ) || []
+  const [searchResults, setSearchResults] = useState<Application[]>([])
 
-  const fuse = new Fuse(filteredData, {
-    keys: [
-      'info.core_information.data_owner_name',
-      'info.core_information.data_owner_region',
-      'info.core_information.data_owner_industry',
-    ],
-  })
-  const results = fuse.search(searchTerm)
-  console.log({ results })
-  const searchResults = searchTerm
-    ? results.map((result) => result.item)
-    : filteredData
+  useEffect(() => {
+    if (isLoading || !data) return
+
+    const filteredData =
+      data?.filter(
+        (app) =>
+          filter === 'all' || app.info.application_lifecycle.state === filter,
+      ) || []
+
+    const fuseOptions = filteredData?.length
+      ? {
+          keys: Object.keys(filteredData[0].info.core_information).map(
+            (key) => `info.core_information.${key}`,
+          ),
+        }
+      : { keys: [] }
+
+    const fuse = new Fuse(filteredData, fuseOptions)
+    const results = fuse.search(searchTerm)
+
+    setSearchResults(
+      searchTerm ? results.map((result) => result.item) : filteredData,
+    )
+  }, [searchTerm, filter, data, isLoading])
 
   if (isLoading) return <div>Loading...</div>
 
@@ -85,7 +94,7 @@ export default function Home() {
 
         <TabsContent value="grid">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 ">
-            {searchResults?.map((app) => (
+            {searchResults?.map((app: Application) => (
               <AppCard application={app} key={app.id} />
             ))}
           </div>
