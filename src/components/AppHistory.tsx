@@ -7,8 +7,6 @@ interface ComponentProps {
 }
 
 const AppHistory = ({ datacapAllocations }: ComponentProps) => {
-  console.log(datacapAllocations, 'xx')
-
   return (
     <div>
       <h2 className="text-3xl font-bold tracking-tight mb-6">
