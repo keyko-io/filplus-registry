@@ -14,12 +14,43 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { getAllApplications } from '@/lib/apiClient'
 import { Search } from 'lucide-react'
 import { useQuery } from 'react-query'
+import { useEffect, useState } from 'react'
+import Fuse from 'fuse.js'
+import { Application } from '@/type'
 
 export default function Home() {
   const { data, isLoading, error } = useQuery({
     queryKey: ['application'],
     queryFn: getAllApplications,
   })
+  const [filter, setFilter] = useState('all')
+  const [searchTerm, setSearchTerm] = useState('')
+  const [searchResults, setSearchResults] = useState<Application[]>([])
+
+  useEffect(() => {
+    if (isLoading || !data) return
+
+    const filteredData =
+      data?.filter(
+        (app) =>
+          filter === 'all' || app.info.application_lifecycle.state === filter,
+      ) || []
+
+    const fuseOptions = filteredData?.length
+      ? {
+          keys: Object.keys(filteredData[0].info.core_information).map(
+            (key) => `info.core_information.${key}`,
+          ),
+        }
+      : { keys: [] }
+
+    const fuse = new Fuse(filteredData, fuseOptions)
+    const results = fuse.search(searchTerm)
+
+    setSearchResults(
+      searchTerm ? results.map((result) => result.item) : filteredData,
+    )
+  }, [searchTerm, filter, data, isLoading])
 
   if (isLoading) return <div>Loading...</div>
 
@@ -34,17 +65,23 @@ export default function Home() {
                 type="search"
                 placeholder="Search Application..."
                 className="md:w-[100px] lg:w-[300px] pl-10"
-                onChange={(e) => console.log(e.target.value)}
+                onChange={(e) => setSearchTerm(e.target.value)}
               />
             </div>
 
-            <Select onValueChange={(value) => console.log(value)}>
+            <Select onValueChange={(value) => setFilter(value)}>
               <SelectTrigger id="area" className="w-[180px]">
                 <SelectValue placeholder="Filter Applications" />
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="all">All</SelectItem>
-                <SelectItem value="efil">Efil+</SelectItem>
+                <SelectItem value="Confirmed">Confirmed</SelectItem>
+                <SelectItem value="Approval">Approval</SelectItem>
+                <SelectItem value="Proposal">Proposal</SelectItem>
+                <SelectItem value="Validation">Validation</SelectItem>
+                <SelectItem value="GovernanceReview">
+                  Governance Review
+                </SelectItem>
               </SelectContent>
             </Select>
           </div>
@@ -57,11 +94,13 @@ export default function Home() {
 
         <TabsContent value="grid">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 ">
-            {data?.map((app) => <AppCard application={app} key={app.id} />)}
+            {searchResults?.map((app: Application) => (
+              <AppCard application={app} key={app.id} />
+            ))}
           </div>
         </TabsContent>
         <TabsContent value="table">
-          <DataTable columns={columns} data={data || []} />
+          <DataTable columns={columns} data={searchResults || []} />
         </TabsContent>
       </Tabs>
     </main>

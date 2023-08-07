@@ -31,6 +31,12 @@ const HomePageCard = ({ application }: Props) => {
             {application.info.core_information.data_owner_industry}
           </p>
         </div>
+        <div className="flex items-center justify-between border-b border-gray-300 pb-2">
+          <p className="text-gray-500">State</p>
+          <p className="font-medium leading-none">
+            {application.info.application_lifecycle.state}
+          </p>
+        </div>
         <div className="flex items-center justify-between">
           <p className="text-gray-500">Website</p>
           <p className="font-medium leading-none">
