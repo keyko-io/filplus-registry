@@ -26,7 +26,11 @@ const AppHistoryCard = ({ allocation }: ComponentProps) => {
           </div>
           <div className="flex items-center justify-between text-sm">
             <div className="text-muted-foreground">signer address</div>
-            <div>{allocation.signers[0].signing_address}</div>
+            <div>
+              {allocation.signers.length
+                ? allocation.signers[0].signing_address
+                : 'No signer'}
+            </div>
           </div>
         </div>
 
